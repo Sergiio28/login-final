@@ -1,7 +1,7 @@
 .mensagem-erro {
     color: red;
 }
-input*:focus{
+.form-label-group:hover{
   cursor: pointer;
 }
 

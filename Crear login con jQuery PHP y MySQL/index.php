@@ -79,9 +79,14 @@
 
    <!-- Contenido --> 
 <div class="container">
-  <h1 class="mt-5">Accede a tu cuenta</h1>
- <hr>
+  
     <div class="row">
+      <div class="col-6 text-center " >
+        <h1 class="mt-5">Accede a tu cuenta</h1>
+      <img class="pt-3" src="image/Logo-Informel.png" alt="Logo Informel Data">
+ <hr class="mt-5 pt-5">
+      </div>
+      
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
@@ -108,7 +113,7 @@
                 <a href="register.php">¿No tienes cuenta?</a>
               </div>
               <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Iniciar Sesión"></input>
-              <hr class="my-4">
+              <!-- <hr class="my-4"> -->
               <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> -->
             </form>

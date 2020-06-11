@@ -78,7 +78,7 @@ if($consulta->num_rows === 0) {
 
 <div class="row">
 <div id="status"></div>      
-<table class="table table-striped" id="tabledit">
+<table class="table table-striped" id="tabledit" style="width: 1024px;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>

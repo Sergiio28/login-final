@@ -11,12 +11,16 @@ $username = $_POST['username'];
 $contrasena = $_POST['contrasena'];
 
 // Usuario corecto
-if ($objLogin->logar($username, $contrasena))
+if ($objLogin->logar($username, $contrasena)){
+	echo false;
+}
     // Retornando usuario falso
-    echo false;
-else
+    
+else{
+	 echo 'Usuario y contraseña invalidas';
+}
     // Retornando mensaje de error
-    echo 'Usuario y contraseña invalidas';
+   
 
 
 
