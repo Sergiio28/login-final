@@ -19,7 +19,9 @@
         // inicia funcion cuando carga la página
         $(function($) {
             // Cuando envia desde formulário
-            $('#frmLogin').submit(function() {
+            $('#frmRegister').submit(function() {
+              contrasena=$('#contrasena').val();
+              contrasena2=$('#contrasena2').val();
                 // Limpiando los mensajes de error
                 $('div.mensagem-erro').html('');
                 // Mostrando carga
@@ -27,21 +29,22 @@
                 // Enviando informacion via AJAX
                 $(this).ajaxSubmit(function(respuesta) {
                     // Si no hay error mostrar el siguiente archivo
-                    if (!respuesta)
+                    if (contrasena==contrasena2)
                         // Redirecionando para o painel
-                        window.location.href = 'PanelControl.php';
+                        window.location.href = 'index.php';
                     else
                     {
                         // Encondiendo la carga con hide()
-                        $('div.loader').hide();
+                        
                         // Exibimos mensaje de error
-                        $('div.mensagem-erro').html(respuesta);
+                        $('div.mensagem-erro').html("Las contraseñas no coinciden");
                     }
                 });
                 // Retornando false
                 return false;
             });
         });
+       
         </script>
   </head>
 <body>
@@ -70,9 +73,15 @@
                 <input type="password" id="contrasena2" name="contrasena2" class="form-control" placeholder="Password2" required>
                 <label for="contrasena2">Repite la contraseña</label>
               </div>
-
+               <div class="custom-control mb-0 mensagem-erro">
+                
+              </div>
               
-              <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Registrarme"></input>
+              <input  class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Registrarme"></input>
+              <div class="custom-control mb-1 mt-3">
+                
+                <a href="index.php">¿Ya tienes cuenta?</a>
+              </div>
               <hr class="my-4">
               <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> -->

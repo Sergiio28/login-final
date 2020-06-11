@@ -108,6 +108,9 @@
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
+              <div class="custom-control mb-0 mensagem-erro">
+                
+              </div>
               <div class="custom-control mb-3">
                 
                 <a href="register.php">¿No tienes cuenta?</a>
