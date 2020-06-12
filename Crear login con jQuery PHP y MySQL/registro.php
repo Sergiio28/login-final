@@ -13,13 +13,26 @@ $nombre = $_POST["name"];
 $username = $_POST["username"];
 $contrasena = $_POST["contrasena"];
 
+$sql_1="SELECT * FROM `usuario` WHERE  username= '".$username."'";
+$resultado= $conectar->query($sql_1);
+$match= mysqli_num_rows($resultado);
+
 //Preparamos la orden SQL
-$sql="INSERT INTO `usuario` (username, contrasena, nombres) VALUES ('$username','$contrasena','$nombre');";
-if (mysqli_query($conectar, $sql)) {
-     echo "Te has registrado correctamente, haz tu'·'<a href='index.php'>login</a>'.'ya";
-}else {
-     echo "Error: " . $sql . "<br>" . mysqli_error($conectar);
+if ($match==0) {
+	$sql="INSERT INTO `usuario` (username, contrasena, nombres) VALUES ('$username','$contrasena','$nombre');";
+	$insert = $conectar->query($sql) or die (mysqli_errno());
+	echo 1;
+}else{
+
+	echo 0;
 }
 }
+
+// if (mysqli_query($conectar, $sql)) {
+//      echo "Te has registrado correctamente, haz tu'·'<a href='index.php'>login</a>'.'ya";
+// }else {
+//      echo "Error: " . $sql . "<br>" . mysqli_error($conectar);
+// }
+// }
 
 

@@ -17,33 +17,65 @@
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <script type="text/javascript">
         // inicia funcion cuando carga la página
-        $(function($) {
-            // Cuando envia desde formulário
-            $('#frmRegister').submit(function() {
-              contrasena=$('#contrasena').val();
-              contrasena2=$('#contrasena2').val();
-                // Limpiando los mensajes de error
-                $('div.mensagem-erro').html('');
-                // Mostrando carga
-                $('div.loader').show();
-                // Enviando informacion via AJAX
-                $(this).ajaxSubmit(function(respuesta) {
-                    // Si no hay error mostrar el siguiente archivo
-                    if (contrasena==contrasena2)
-                        // Redirecionando para o painel
-                        window.location.href = 'index.php';
-                    else
-                    {
-                        // Encondiendo la carga con hide()
+        $(function(){
+          $('#frmRegister').submit(function(e) {
+            e.preventDefault();
+            var name=$('#name').val();
+            var username=$('#username').val();
+            var contrasena=$('#contrasena').val();
+            var contrasena2=$('#contrasena2').val();
+            /* Act on the event */
+            if(contrasena==contrasena2){
+               $.ajax({
+              type: 'POST',
+              url: 'registro.php',
+              data: ('name='+name+'&username='+username+'&contrasena='+contrasena),
+              success: function(respuesta){
+                if (respuesta==1){
+                   $('.mensagem-erro').html('Te has registrado correctamente').css('color','green');
+
+                }else{
+                   $('.mensagem-erro').html('Este e-mail ya esta registrado');
+                }
+              }
+            })
+            
+            }
+             else{
+                 $('.mensagem-erro').html('Las contraseñas no coinciden');
+               }
+           
+          });
+        })
+        // $(function($) {
+        //     // Cuando envia desde formulário
+        //     $('#frmRegister').submit(function() {
+        //       var contrasena=$('#contrasena').val();
+        //       var  contrasena2=$('#contrasena2').val();
+        //         // Limpiando los mensajes de error
+        //         $('div.mensagem-erro').html('');
+        //         // Mostrando carga
+        //         $('div.loader').show();
+        //         // Enviando informacion via AJAX
+        //         $(this).ajaxSubmit(function(respuesta) {
+        //             // Si no hay error mostrar el siguiente archivo
+        //             if (contrasena===contrasena2)
+        //                 // Redirecionando para o painel
+
+                      
+        //                 window.location.href = 'index.php';
+        //             else
+        //             {
                         
-                        // Exibimos mensaje de error
-                        $('div.mensagem-erro').html("Las contraseñas no coinciden");
-                    }
-                });
-                // Retornando false
-                return false;
-            });
-        });
+                        
+        //                 // Exibimos mensaje de error
+        //                 $('div.mensagem-erro').html("Las contraseñas no coinciden");
+        //             }
+        //         });
+        //         // Retornando false
+        //         return false;
+        //     });
+        // });
        
         </script>
   </head>
@@ -73,11 +105,11 @@
                 <input type="password" id="contrasena2" name="contrasena2" class="form-control" placeholder="Password2" required>
                 <label for="contrasena2">Repite la contraseña</label>
               </div>
-               <div class="custom-control mb-0 mensagem-erro">
+               <div class="custom-control mb-1 mensagem-erro">
                 
               </div>
               
-              <input  class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Registrarme"></input>
+              <input  class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="enviar" value="Registrarme"></input>
               <div class="custom-control mb-1 mt-3">
                 
                 <a href="index.php">¿Ya tienes cuenta?</a>
@@ -94,7 +126,10 @@
 
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="assets/js/vendor/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
